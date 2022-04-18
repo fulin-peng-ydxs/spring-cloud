@@ -1,0 +1,10 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: client-8001
+  cloud:
+    zookeeper:
+      #注册地址
+      connect-string: 192.168.1.6:2181

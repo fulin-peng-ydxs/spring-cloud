@@ -1,0 +1,12 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: client-8001
+  cloud:
+    #consul配置
+    consul:
+     host: 192.168.1.6  #注册地址
+     port: 8500 #注册端口
+     discovery:
+      service-name: ${spring.application.name} #注册服务名
