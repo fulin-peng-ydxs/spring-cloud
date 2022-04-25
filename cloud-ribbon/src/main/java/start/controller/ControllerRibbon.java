@@ -1,6 +1,5 @@
 package start.controller;
 
-import com.netflix.discovery.DiscoveryClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,8 +17,6 @@ public class ControllerRibbon {
 
     @Autowired
     private RestTemplate restTemplate;
-
-
 
     private final String SERVICE_NAME="http://client-cluster";
 

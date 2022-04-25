@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author PengFuLin
- * @description: 轮询测试控制层
+ * @description: 负载均衡控制器
  * @date 2022/4/17 19:07
  */
 @Controller
