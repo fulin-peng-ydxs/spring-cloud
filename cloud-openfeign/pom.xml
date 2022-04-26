@@ -15,7 +15,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-        <!--调用服务的feign客户端-->
+        <!--feign客户端-->
         <dependency>
             <groupId>S1897.java.spring-cloud</groupId>
             <artifactId>cloud-feign_model</artifactId>

@@ -9,7 +9,7 @@ import start.feign.FeignService;
 
 /**
  * @author PengFuLin
- * @description
+ * @description feign客户端测试
  * @date 2022/4/26 22:28
  */
 @Controller

@@ -5,7 +5,7 @@ import start.feign.FeignService;
 
 /**
  * @author PengFuLin
- * @description Feign客户端调用的控制器
+ * @description Feign客户端调用的控制器实现
  * @date 2022/4/26 22:25
  */
 @Controller
