@@ -8,19 +8,14 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cloud-registry</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>registry-eureka</module>
-        <module>registry-zookeeper</module>
-        <module>registry-consul</module>
-    </modules>
+    <artifactId>cloud-openfeign</artifactId>
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>S1897.java.spring-cloud</groupId>-->
-<!--            <artifactId>cloud-commons</artifactId>-->
-<!--            <version>1.0-SNAPSHOT</version>-->
-<!--        </dependency>-->
+        <!--eureka客户端-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <!--调用服务的feign客户端-->
         <dependency>
             <groupId>S1897.java.spring-cloud</groupId>
             <artifactId>cloud-feign_model</artifactId>
