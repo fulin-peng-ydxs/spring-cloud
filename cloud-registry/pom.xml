@@ -16,14 +16,10 @@
         <module>registry-consul</module>
     </modules>
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>S1897.java.spring-cloud</groupId>-->
-<!--            <artifactId>cloud-commons</artifactId>-->
-<!--            <version>1.0-SNAPSHOT</version>-->
-<!--        </dependency>-->
+        <!--调用服务模块-->
         <dependency>
             <groupId>S1897.java.spring-cloud</groupId>
-            <artifactId>cloud-feign_model</artifactId>
+            <artifactId>cloud-service</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

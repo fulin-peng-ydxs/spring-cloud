@@ -13,7 +13,9 @@
         <module>cloud-ribbon</module>
         <module>cloud-source</module>
         <module>cloud-commons</module>
-        <module>cloud-modelfeign</module>
+        <module>cloud-service</module>
+        <module>cloud-hystrix</module>
+        <module>cloud-hystrix_dashboard</module>
     </modules>
     <modelVersion>4.0.0</modelVersion>
 

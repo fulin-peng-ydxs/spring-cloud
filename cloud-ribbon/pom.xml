@@ -15,7 +15,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-
+        <!--web服务端-->
         <dependency>
             <groupId>S1897.java.spring-cloud</groupId>
             <artifactId>cloud-commons</artifactId>
