@@ -1,0 +1,45 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    ##网关配置
+    gateway:
+      routes:
+        ##静态路由
+        - id: route1 #路由的ID，没有固定规则但要求唯一，建议配合服务名
+          uri: http://localhost:8001   #匹配后提供服务的路由地址
+          predicates:
+            - Path=/gateway/8001   #断言,路径相匹配的进行路由
+        - id: route2
+          uri: http://localhost:8002
+          predicates:
+            - Path=/gateway/8002    #断言,路径相匹配的进行路由
+        ##动态路由
+        - id: run_route
+          uri: lb://CLIENT-CLUSTER
+          predicates:
+            - Path=/ribbon    #断言,路径相匹配的进行路由
+            ##在指定时间之后才能够匹配到路由
+#            - After=2020-03-08T10:59:34.102+08:00[Asia/Shanghai]
+#            ##在指定时间之前才能够匹配到路由
+#            - Before=2020-03-08T10:59:34.102+08:00[Asia/Shanghai]
+#            ##在指定时间之间才能够匹配到路由
+#            - Between=2020-03-08T10:59:34.102+08:00[Asia/Shanghai],2020-03-08T10:59:34.102+08:00[Asia/Shanghai]
+#            ##第一个为cookieName，第二个为cookieValue
+#            - Cookie=username,pengshuaifen
+#            ##host主机值根据正则表达式进行匹配
+#            - Host=**.atguigu.com
+#            ##method请求方法匹配
+#            - Method=GET
+#            #要有参数名称username,并且是正整数(正则表达式)才能路由
+#            - Query=username, \d+
+eureka:
+  instance:
+    hostname: cloud-gateway-service
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+    register-with-eureka: true
+    fetch-registry: true
