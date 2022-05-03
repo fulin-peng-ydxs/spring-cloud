@@ -11,13 +11,15 @@ spring:
       ##设置配置文件后缀
       profile: dev
       ##设置配置服务url
-#      uri: http://localhost:3344
+      #      uri: http://localhost:3344
       ##设置配置服务的服务发现信息
       discovery:
         ##启用配置服务的发现功能
         enabled: true
         ##设置配置服务的服务名
         service-id: cloudConfig
+      ##如果没有连接到服务端则直接报错
+      fail-fast: true
 #eureka客户端
 eureka:
   client:

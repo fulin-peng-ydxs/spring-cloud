@@ -21,6 +21,12 @@ spring:
 #          default-label: master
       ##默认拉取指定分支的配置
       label: develop
+  ##用于集成bus
+  rabbitmq:
+    host: 192.168.1.6
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   instance:
     ##主机名称
@@ -32,3 +38,12 @@ eureka:
       defaultZone: http://eureka7002.com:7002/eureka,http://eureka7001.com:7001/eureka
     register-with-eureka: true
     fetch-registry: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - info
+          - health
+          ##暴露bus刷新端点
+          - bus-refresh

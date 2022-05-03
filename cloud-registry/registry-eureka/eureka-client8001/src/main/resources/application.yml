@@ -12,3 +12,10 @@ management:
           - health
           ##配置刷新端点
           - refresh
+spring:
+  ##用于集成bus
+  rabbitmq:
+    host: 192.168.1.6
+    port: 5672
+    username: guest
+    password: guest
