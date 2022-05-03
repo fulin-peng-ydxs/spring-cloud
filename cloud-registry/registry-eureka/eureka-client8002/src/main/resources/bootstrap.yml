@@ -1,0 +1,32 @@
+#设置服务名
+spring:
+  application:
+    name: client-cluster
+  cloud:
+    config:
+      ##设置配置文件分支
+      label: develop
+      ##设置配置文件名
+      name: application_config
+      ##设置配置文件后缀
+      profile: dev
+      ##设置配置服务url
+#      uri: http://localhost:3344
+      ##设置配置服务的服务发现信息
+      discovery:
+        ##启用配置服务的发现功能
+        enabled: true
+        ##设置配置服务的服务名
+        service-id: cloudConfig
+#eureka客户端
+eureka:
+  client:
+    register-with-eureka: true
+    fetchRegistry: true
+    service-url:
+      #    defaultZone: http://localhost:7001/eureka/
+      #集群配置
+      defaultZone:  http://eureka7002.com:7002/eureka,http://eureka7001.com:7001/eureka
+  instance:
+    #实例名称
+    instance-id: client-8002

@@ -37,6 +37,7 @@ spring:
 #            - Query=username, \d+
 eureka:
   instance:
+    ##主机名称
     hostname: cloud-gateway-service
   client:
     service-url:

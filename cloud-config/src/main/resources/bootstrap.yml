@@ -1,0 +1,34 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: cloudConfig
+  cloud:
+    config:
+      server:
+        git:
+          ##填写远程github路径
+          uri: https://gitee.com/S1897/spring-cloud.git
+          ##指定账号和密码
+          username: 15773008216
+          password: pfl985211..
+          ##指定搜索路径
+          search-paths:
+            - /cloud-source/src/main/resources/config
+          ##本地路径配置
+#          basedir: ./config
+#          ##本地默认拉取分支
+#          default-label: master
+      ##默认拉取指定分支的配置
+      label: develop
+eureka:
+  instance:
+    ##主机名称
+    hostname: cloud-config-service
+    #显示主机ip(配置客户端用于服务发现时需要进行配置)
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka7002.com:7002/eureka,http://eureka7001.com:7001/eureka
+    register-with-eureka: true
+    fetch-registry: true

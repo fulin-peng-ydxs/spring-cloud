@@ -17,6 +17,8 @@
         <module>cloud-hystrix</module>
         <module>cloud-hystrix_dashboard</module>
         <module>cloud-zuul</module>
+        <module>cloud-config</module>
+        <module>cloud-bus</module>
     </modules>
     <modelVersion>4.0.0</modelVersion>
 
