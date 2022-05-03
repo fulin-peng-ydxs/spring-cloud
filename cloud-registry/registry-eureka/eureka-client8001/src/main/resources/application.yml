@@ -1,0 +1,14 @@
+server:
+  port: 8001
+management:
+  endpoints:
+    ##web管理
+    web:
+      ##暴露端点
+      exposure:
+        ##包括
+        include:
+          - info
+          - health
+          ##配置刷新端点
+          - refresh

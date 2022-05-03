@@ -1,0 +1,25 @@
+server:
+  port: 80
+
+#设置服务名
+spring:
+  application:
+    name: client-80
+#eureka客户端
+eureka:
+ client:
+  register-with-eureka: true
+  fetchRegistry: true
+  service-url:
+    #defaultZone: http://localhost:7001/eureka
+    #集群配置
+    defaultZone:  http://eureka7002.com:7002/eureka,http://eureka7001.com:7001/eureka
+ instance:
+   #实例名称
+   instance-id: client-80
+   #显示主机ip
+   prefer-ip-address: true
+   #设置服务端在收到最后一次心跳检测后的等待时间上限，默认为90秒，超时就会剔除
+   lease-expiration-duration-in-seconds: 2
+   #设置客户端向服务端发送心跳检测的时间间隔：默认是30秒
+   lease-renewal-interval-in-seconds: 1
