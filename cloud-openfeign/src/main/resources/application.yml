@@ -1,11 +1,19 @@
 server:
   port: 9001
-
 #设置服务名
 spring:
   application:
     name: feign-client
-
+  ##zipkin
+  zipkin:
+    ##调用链路数据传输地址
+    base-url: http://localhost:9411
+  ##调用链路
+  sleuth:
+    ##取样器
+    sampler:
+      ##每次都进行采取
+      probability: 1
 #eureka客户端
 eureka:
  client:
@@ -19,6 +27,6 @@ eureka:
 ##控制ribbon调用时间
 ribbon:
  ##响应时间
- ReadTimeout: 1
+ ReadTimeout: 2000
  ##连接时间
- ConnectTimeout: 1
+ ConnectTimeout: 2000

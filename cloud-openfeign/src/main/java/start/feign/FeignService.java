@@ -13,8 +13,6 @@ import start.ServiceApi;
 //作为feign客户端
 @FeignClient(value = "client-cluster")
 public interface FeignService extends ServiceApi {
-    @Override
-    String service1();
 }
 
 
