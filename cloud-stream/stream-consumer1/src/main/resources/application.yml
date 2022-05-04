@@ -1,0 +1,41 @@
+server:
+  port: 5061
+
+spring:
+  application:
+    name: cloud-stream-consumer
+  cloud:
+    stream:
+      ##绑定器：绑定消息中间件
+      binders:
+        ##绑定器：defaultRabbit
+        defaultRabbit:
+          ##消息件类型
+          type: rabbit
+          ##rabbitmq相关环境
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.1.6
+                port: 5672
+                username: guest
+                password: guest
+      ##绑定通道
+      bindings:
+        #输入通道：消息接收者
+        input:
+          #绑定器代理的物理名称：rabbitmq上就是绑定的交换机名称
+          destination: studyExchange
+          #消息类型，本次为json，文本则设置“text/plain”
+          content-type: application/json
+          #设置通道的绑定器
+          binder: defaultRabbit
+          ##设置分组: 避免重复消费：不分组默认是单独一个队列（在rabbitmq上）
+          group: c1
+
+  ##防止报错：可能时依赖引入后的自动配置问题
+  rabbitmq:
+    host: 192.168.1.6
+    port: 5672
+    username: guest
+    password: guest
