@@ -21,6 +21,7 @@
         <module>cloud-bus</module>
         <module>cloud-stream</module>
         <module>cloud-sleuth</module>
+        <module>cloud-alibaba</module>
     </modules>
     <modelVersion>4.0.0</modelVersion>
 

@@ -1,0 +1,16 @@
+server:
+  port: 8850
+spring:
+  application:
+    name: nacos-provider
+  cloud:
+    nacos:
+      ##配置服务发现
+      discovery:
+        #配置nacos连接地址
+        server-addr:  localhost:8848
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
