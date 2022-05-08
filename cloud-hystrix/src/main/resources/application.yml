@@ -24,7 +24,7 @@ ribbon:
  ##连接时间
  ConnectTimeout: 20000
 
-###开启客户端服务降级
-feign:
-  hystrix:
-    enabled: true
+####开启客户端服务降级
+#feign:
+#  hystrix:
+#    enabled: true

@@ -12,5 +12,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>alibaba-nacos</module>
+        <module>alibaba-sentinel</module>
     </modules>
 </project>
