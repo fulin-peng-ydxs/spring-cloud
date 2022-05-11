@@ -13,6 +13,7 @@ import start.feign.FeignService;
  */
 @Controller
 public class FeignController {
+
     @Autowired
     private FeignService feignService;
 

@@ -1,0 +1,6 @@
+server:
+  port: 8081
+#feign:
+#  sentinel:
+#    enabled: true # 激活Sentinel对Feign的支持
+

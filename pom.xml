@@ -19,6 +19,9 @@
         <module>cloud-zuul</module>
         <module>cloud-config</module>
         <module>cloud-bus</module>
+        <module>cloud-stream</module>
+        <module>cloud-sleuth</module>
+        <module>cloud-alibaba</module>
     </modules>
     <modelVersion>4.0.0</modelVersion>
 
@@ -72,6 +75,12 @@
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.spring.boot.version}</version>
+            </dependency>
+            <!--lombok依赖-->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.16.10</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

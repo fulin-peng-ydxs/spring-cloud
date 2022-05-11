@@ -16,6 +16,8 @@ spring:
         enabled: true
         ##设置配置服务的服务名
         service-id: cloudConfig
+      ##如果没有连接到服务端则直接报错
+      fail-fast: true
 ##eureka客户端
 eureka:
   client:
