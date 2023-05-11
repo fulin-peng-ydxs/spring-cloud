@@ -1,4 +1,4 @@
-package start.conf;
+package gateway.conf;
 
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
