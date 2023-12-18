@@ -1,20 +1,17 @@
 package gateway.filter;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import gateway.dto.GatewayContext;
 import gateway.dto.ResponseDto;
-import gateway.util.JsonUtil;
+import gateway.util.JsonUtils;
+import gateway.util.WebServerUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.core.Ordered;
-import org.springframework.core.io.buffer.DataBuffer;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.Mono;
-
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -40,17 +37,17 @@ public class PreSqlValidateGatewayFilter  extends AbstractGatewayFilterFactory<P
             GatewayContext cacheGatewayContext = (GatewayContext)exchange.getAttributes().get("cacheGatewayContext");
             if(cacheGatewayContext!=null){
                 logger.debug("进行SQL注入攻击过滤....");
-                Map<String,Object> map = JsonUtil.toBean(Map.class, cacheGatewayContext.getJsonBody());
+                Map<String,Object> map = JsonUtils.getMap(cacheGatewayContext.getJsonBody(), new TypeReference<Map<String,Object>>() {});
                 Object sortName = map.get("sortName");
                 Object sortOrder = map.get("sortOrder");
                 if (sqlInjectionAttack(sortOrder)||sqlInjectionAttack(sortName)) {
                     //SQL注入攻击
                     logger.warn("检测到sql注入攻击或存在sql注入风险，已拦截请求：attackParam：{}、attackAddress：{}",
                             cacheGatewayContext.getJsonBody(), exchange.getRequest().getRemoteAddress());
-                    return responseToClient(
+                    return WebServerUtil.responseToClient(
                             ResponseDto.failure("非法参数",null),
                             exchange.getResponse(),
-                            HttpStatus.UNAUTHORIZED
+                            HttpStatus.INTERNAL_SERVER_ERROR
                     );
                 }
             }
@@ -61,25 +58,6 @@ public class PreSqlValidateGatewayFilter  extends AbstractGatewayFilterFactory<P
     @Override
     public int getOrder() {
         return -1;
-    }
-
-
-    /**设置请求响应
-     * 2023/5/11 0011-11:11
-     * @author pengfulin
-    */
-    private Mono<Void> responseToClient(ResponseDto<?> responseDto, ServerHttpResponse response, HttpStatus status)
-    {
-        //设置响应状态码
-        response.setStatusCode(status);
-        //设置响应headers
-        HttpHeaders httpHeaders = response.getHeaders();
-        httpHeaders.add("Content-Type", "application/json; charset=UTF-8");
-        httpHeaders.add("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
-        //设置响应body
-        String respStr = JsonUtil.toJson(responseDto);
-        DataBuffer bodyDataBuffer = response.bufferFactory().wrap(respStr.getBytes());
-        return response.writeWith(Mono.just(bodyDataBuffer));
     }
 
     /**校验是否存在sql注入
