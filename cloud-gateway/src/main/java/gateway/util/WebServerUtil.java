@@ -56,6 +56,11 @@ public class WebServerUtil {
 		return httpCookies.get(0);
 	}
 
+	/**
+	 * 写入cookie信息
+	 * 2023/12/30 12:11
+	 * @author pengshuaifeng
+	 */
 
 	/**
 	 * 是否为Ajax请求
@@ -83,11 +88,11 @@ public class WebServerUtil {
 	}
 
 	/**
-	 * 请求返回
+	 * 请求返回：json
 	 * 2023/12/18 23:40
 	 * @author pengshuaifeng
 	 */
-	public static Mono<Void> responseToClient(ResponseDto<?> responseDto, ServerHttpResponse response, HttpStatus status)
+	public static Mono<Void> responseToJson(ResponseDto<?> responseDto, ServerHttpResponse response, HttpStatus status)
 	{
 		//设置响应状态码
 		response.setStatusCode(status);

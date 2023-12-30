@@ -44,7 +44,7 @@ public class PreSqlValidateGatewayFilter  extends AbstractGatewayFilterFactory<P
                     //SQL注入攻击
                     logger.warn("检测到sql注入攻击或存在sql注入风险，已拦截请求：attackParam：{}、attackAddress：{}",
                             cacheGatewayContext.getJsonBody(), exchange.getRequest().getRemoteAddress());
-                    return WebServerUtil.responseToClient(
+                    return WebServerUtil.responseToJson(
                             ResponseDto.failure("非法参数",null),
                             exchange.getResponse(),
                             HttpStatus.INTERNAL_SERVER_ERROR
