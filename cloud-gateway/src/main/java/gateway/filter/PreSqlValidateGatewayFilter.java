@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import gateway.dto.GatewayContext;
 import gateway.dto.ResponseDto;
 import gateway.util.JsonUtils;
-import gateway.util.WebServerUtil;
+import gateway.util.WebServerUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
@@ -44,7 +44,7 @@ public class PreSqlValidateGatewayFilter  extends AbstractGatewayFilterFactory<P
                     //SQL注入攻击
                     logger.warn("检测到sql注入攻击或存在sql注入风险，已拦截请求：attackParam：{}、attackAddress：{}",
                             cacheGatewayContext.getJsonBody(), exchange.getRequest().getRemoteAddress());
-                    return WebServerUtil.responseToJson(
+                    return WebServerUtils.responseToJson(
                             ResponseDto.failure("非法参数",null),
                             exchange.getResponse(),
                             HttpStatus.INTERNAL_SERVER_ERROR

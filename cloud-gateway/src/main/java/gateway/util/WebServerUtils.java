@@ -14,7 +14,7 @@ import java.net.URI;
 import java.util.List;
 
 @Slf4j
-public class WebServerUtil {
+public class WebServerUtils {
 
 	/**获取请求参数
 	 * 2023/6/7 0007-14:45
