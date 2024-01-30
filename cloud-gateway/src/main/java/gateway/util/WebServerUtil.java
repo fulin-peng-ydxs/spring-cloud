@@ -10,6 +10,7 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.util.MultiValueMap;
 import reactor.core.publisher.Mono;
+import java.net.InetSocketAddress;
 import java.net.URI;
 import java.util.List;
 
@@ -106,4 +107,13 @@ public class WebServerUtil {
 	 * 2023/12/18 23:54
 	 * @author pengshuaifeng
 	 */
+	public static String getRequestIp(ServerHttpRequest request){
+		String header = getHeader(request, "X-Forwarded-For");
+		header=header==null?getHeader(request, "X-Real-IP"):header;
+		InetSocketAddress remoteAddress = request.getRemoteAddress();
+		if(header==null && remoteAddress!=null){
+			header= remoteAddress.getHostString();
+		}
+		return header;
+	}
 }
