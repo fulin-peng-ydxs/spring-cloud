@@ -13,6 +13,8 @@ import reactor.core.publisher.Mono;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class WebServerUtils {
@@ -22,14 +24,22 @@ public class WebServerUtils {
 	 * @author pengfulin
 	*/
 	public static String getRequestParam(String key,ServerHttpRequest request){
-		MultiValueMap<String, String> queryParams =request.getQueryParams();
-		List<String> params = queryParams.get(key);
-		if(params!=null&&!params.isEmpty()){
-			return params.get(0);
-		}
-		return null;
+		return getRequestParam(request).get(key);
 	}
 
+	/**
+	 * 获取请求参数列表
+	 * 2024/6/20 0020 16:35
+	 * @author fulin-peng
+	 */
+	public static Map<String,String> getRequestParam(ServerHttpRequest request){
+		return request.getQueryParams().entrySet().stream()
+				.filter(entry -> !entry.getValue().isEmpty()) // 过滤空列表
+				.collect(Collectors.toMap(
+						Map.Entry::getKey,
+						entry -> entry.getValue().get(0) // 获取列表中的第一个元素
+				));
+	}
 
 	/**获取请求头
 	 * 2023/6/29 0029-16:00
