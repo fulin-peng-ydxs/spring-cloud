@@ -1,14 +1,16 @@
 package gateway.util;
 
+import gateway.conf.cookie.CookieProperties;
 import gateway.dto.ResponseDto;
+import gateway.model.CookieConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpCookie;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
-import org.springframework.util.MultiValueMap;
 import reactor.core.publisher.Mono;
 import java.net.InetSocketAddress;
 import java.net.URI;
@@ -72,6 +74,26 @@ public class WebServerUtils {
 	 * 2023/12/30 12:11
 	 * @author pengshuaifeng
 	 */
+	public static void setCookie(String cookieName,String cookieValue,String path,
+								 ServerHttpResponse response){
+		ResponseCookie cookie = ResponseCookie.from(cookieName, cookieValue)
+				.path(path).build();
+		response.addCookie(cookie);
+	}
+
+	public static void setCookie(String cookieName,String cookieValue, ServerHttpResponse response){
+		setCookie(cookieName,cookieValue,"/",response);
+	}
+
+	public static void setCookie(CookieConfig cookieConfig, ServerHttpResponse response){
+		CookieProperties properties = cookieConfig.getProperties();
+		ResponseCookie cookie = ResponseCookie.from(cookieConfig.getName(), cookieConfig.getValue())
+				.path(properties.getPath())
+				.secure(properties.isSecure())
+				.httpOnly(properties.isHttpOnly())
+				.build();
+		response.addCookie(cookie);
+	}
 
 	/**
 	 * 是否为Ajax请求
