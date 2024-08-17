@@ -18,11 +18,10 @@ public class ControllerRibbon {
     @Autowired
     private RestTemplate restTemplate;
 
-    private final String SERVICE_NAME="http://client-cluster";
-
     @GetMapping("/ribbon")
     @ResponseBody
     public String ribbon(){
+        String SERVICE_NAME = "http://client-cluster";
         ResponseEntity<String> forEntity = restTemplate.getForEntity(SERVICE_NAME + "/ribbon", String.class);
         return forEntity.getBody();
     }
