@@ -1,10 +1,10 @@
 package start;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-//@RequestMapping("/service")
 public interface ServiceApi {
 //    @GetMapping("/feign/service1")
     @GetMapping("/service1")

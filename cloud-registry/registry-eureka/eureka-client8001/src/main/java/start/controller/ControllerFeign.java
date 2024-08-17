@@ -1,5 +1,6 @@
 package start.controller;
 
+import org.springframework.stereotype.Controller;
 import start.ServiceApi;
 
 /**
@@ -7,7 +8,7 @@ import start.ServiceApi;
  * @description Feign客户端调用的控制器实现
  * @date 2022/4/26 22:25
  */
-//@Controller
+@Controller
 public class ControllerFeign implements ServiceApi {
 
     @Override

@@ -29,13 +29,12 @@ public class ControllerCustomRibbon {
     @Autowired
     private RestTemplate restTemplate;
 
-    private final String SERVICE_NAME="client-cluster";
-
     @GetMapping("/ribbon")
     @ResponseBody
     public String ribbon(){
+        String SERVICE_NAME = "client-cluster";
         List<ServiceInstance> instances = discoveryClient.getInstances(SERVICE_NAME);
-        if (instances == null || instances.size()==0){
+        if (instances == null || instances.isEmpty()){
             return null;
         }
         ServiceInstance serviceInstance = customILoadBalancer.instances(instances);

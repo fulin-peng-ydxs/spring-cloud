@@ -22,4 +22,21 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
+<!--    <dependencyManagement>-->
+
+<!--        &lt;!&ndash;引入新版：支持spring cloud loadbalancer&ndash;&gt;-->
+<!--        <dependencies>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-dependencies</artifactId>-->
+<!--                <version>2020.0.4</version> &lt;!&ndash; 或更高版本 &ndash;&gt;-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
+
+<!--        </dependencies>-->
+
+<!--    </dependencyManagement>-->
+
 </project>
