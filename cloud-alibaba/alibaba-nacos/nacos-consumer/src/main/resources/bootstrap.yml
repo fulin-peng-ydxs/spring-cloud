@@ -5,12 +5,13 @@ spring:
     active: dev
   cloud:
     nacos:
-      ##配置服务发现
-      discovery:
+      discovery: # 服务发现
         #配置nacos连接地址
         server-addr:  localhost:8848
-      ##配置中心
-      config:
+        register-enabled: true #开启，服务注册 （不做注册，只做发现：本地开发测试可关闭）
+        enabled: true #开启，本地开发测试可关闭
+      config: # 配置中心
+        enabled: true #开启，本地开发测试可关闭
         server-addr: localhost:8848
         ##文件后缀
         file-extension: yaml
