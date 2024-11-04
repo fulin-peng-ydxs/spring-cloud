@@ -15,5 +15,6 @@
         <module>alibaba-sentinel</module>
         <module>alibaba-seata</module>
         <module>seata-component</module>
+        <module>alibaba-nacos/nacos-client</module>
     </modules>
 </project>

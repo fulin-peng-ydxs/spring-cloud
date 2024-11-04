@@ -1,0 +1,26 @@
+#============================================
+#
+# server config
+#
+#============================================
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: utf-8
+  servlet:
+    context-path: /nacos-client
+
+#============================================
+#
+# nacos client config
+#
+#============================================
+nacos:
+  client:
+    serverAddr: 10.100.101.104:8848
+    userName: nacos
+    passwd: nacos
+
+logging:
+  level:
+    root: debug

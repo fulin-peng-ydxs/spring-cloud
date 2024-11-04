@@ -1,0 +1,10 @@
+#============================================
+#
+# nacos client config
+#
+#============================================
+nacos:
+  client:
+    serverAddr: 10.166.33.200:8848
+    userName: nacos
+    passwd: xhd@Nacos2024
