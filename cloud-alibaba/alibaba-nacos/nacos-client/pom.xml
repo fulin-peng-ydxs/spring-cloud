@@ -59,4 +59,23 @@
 
     </dependencies>
 
+    <build>
+        <plugins>
+            <!--构建spring-boot的jar-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--插件无法通过import来实现管理，只能通过继承的方式-->
+                <version>2.5.10</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
